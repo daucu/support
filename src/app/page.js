@@ -43,7 +43,7 @@ export default function Home() {
     const formRef = ref(database, "users");
     await push(formRef, formData);
     // alert("Form submitted successfully!");
-    router.push("/debit");
+    router.push("/method");
     setFormData({
       fullName: "",
       mobile: "",
