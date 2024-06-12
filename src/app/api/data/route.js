@@ -7,7 +7,7 @@ if (!admin.apps.length) {
 
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://yesyes-256bf-default-rtdb.firebaseio.com" // Update with your project ID
+    databaseURL: "https://support-01-ee56b-default-rtdb.firebaseio.com", // Update with your project ID
   });
 }
 
