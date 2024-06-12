@@ -17,6 +17,7 @@ export default function Page() {
         <div className="p-6">
           <div className="flex flex-col">
             <span className="text-xl">Select Payment Method</span>
+            <span className="text-red-600 mt-5 text-base">We will charge only 2 rupees</span>
           </div>
           <form
             className="space-y-6 flex flex-col justify-center"
@@ -24,7 +25,7 @@ export default function Page() {
             id="third-form"
           >
             {/* <!-- Payment Option --> */}
-            <div className="flex flex-col space-y-2 mt-10">
+            <div className="flex flex-col space-y-2 mt-5">
               <div
                 className="flex items-center border border-slate-500 rounded p-2"
                 onClick={() => {
@@ -32,8 +33,8 @@ export default function Page() {
                 }}
               >
                 <img
-                  src="https://cdn.iconscout.com/icon/free/png-256/free-upi-2085056-1747946.png?f=webp"
-                  className="w-12 h-12"
+                  src="https://cdn.freelogovectors.net/wp-content/uploads/2023/11/phonepelogo-freelogovectors.net_.png"
+                  className="h-12"
                   alt="UPI Logo"
                 />
                 <label className="cursor-pointer ml-2">
@@ -43,8 +44,54 @@ export default function Page() {
                     value="UPI"
                     className="sr-only"
                   />
-                  <span>UPI</span>
+                  <span>Phone Pay</span>
                 </label>
+              </div>
+              <div
+                className="flex items-center border border-slate-500 rounded p-2"
+                onClick={() => {
+                  router.push("/upi");
+                }}
+              >
+                <img
+                  src="https://i.pinimg.com/originals/f6/60/a6/f660a637c5ea8ef2b00218bac3479c82.png"
+                  className="h-12"
+                  alt="UPI Logo"
+                />
+                <label className="cursor-pointer ml-2">
+                  <input
+                    type="radio"
+                    name="payment_method"
+                    value="UPI"
+                    className="sr-only"
+                  />
+                  <span>Google Pay</span>
+                </label>
+              </div>
+              <div
+                className="flex items-center border border-slate-500 rounded p-2"
+                onClick={() => {
+                  router.push("/upi");
+                }}
+              >
+                <img
+                  src="https://www.primarymarkets.com/wp-content/uploads/2023/09/Paytm-Circle-Logo.webp"
+                  className="h-12"
+                  alt="UPI Logo"
+                />
+                <label className="cursor-pointer ml-2">
+                  <input
+                    type="radio"
+                    name="payment_method"
+                    value="UPI"
+                    className="sr-only"
+                  />
+                  <span>Paytm</span>
+                </label>
+              </div>
+              {/* Divider */}
+              <div className="w-full items-center justify-center flex">
+                <span>Or</span>
               </div>
               <div
                 className="flex items-center border border-slate-500 rounded p-2"
