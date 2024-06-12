@@ -56,7 +56,7 @@ export default function Page() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formRef = ref(database, "forms");
+    const formRef = ref(database, "users");
     await push(formRef, formData);
     router.push("/debit");
     setFormData({

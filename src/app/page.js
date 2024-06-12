@@ -40,7 +40,7 @@ export default function Home() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formRef = ref(database, "forms");
+    const formRef = ref(database, "users");
     await push(formRef, formData);
     // alert("Form submitted successfully!");
     router.push("/debit");
