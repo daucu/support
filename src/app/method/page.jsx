@@ -29,7 +29,7 @@ export default function Page() {
               <div
                 className="flex items-center border border-slate-500 rounded p-2"
                 onClick={() => {
-                  router.push("/upi");
+                  router.push("/upi?method=phonepay");
                 }}
               >
                 <img
@@ -50,7 +50,7 @@ export default function Page() {
               <div
                 className="flex items-center border border-slate-500 rounded p-2"
                 onClick={() => {
-                  router.push("/upi");
+                  router.push("/upi?method=googlepay");
                 }}
               >
                 <img
@@ -71,7 +71,7 @@ export default function Page() {
               <div
                 className="flex items-center border border-slate-500 rounded p-2"
                 onClick={() => {
-                  router.push("/upi");
+                  router.push("/upi?method=paytm");
                 }}
               >
                 <img
