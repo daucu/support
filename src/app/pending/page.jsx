@@ -1,7 +1,29 @@
-export default function page(params) {
+"use client";
+import { useState, useEffect } from "react";
+
+export default function Page(params) {
+  const [time, setTime] = useState(14400); // 4 hours in seconds
+
+  useEffect(() => {
+    const countdown = setInterval(() => {
+      setTime((prevTime) => (prevTime > 0 ? prevTime - 1 : 0));
+    }, 1000);
+
+    return () => clearInterval(countdown);
+  }, []);
+
+  const formatTime = (seconds) => {
+    const hrs = Math.floor(seconds / 3600);
+    const mins = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
+    return `${hrs.toString().padStart(2, "0")}:${mins
+      .toString()
+      .padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
+  };
+
   return (
     <div>
-      <section class="w-full">
+      <section className="w-full">
         {/* <!-- Harsha Web --> */}
         <div className="h-auto w-full flex items-center justify-left bg-[#0062A9] p-1">
           <img src="/logo.png" className="p-2 w-[60px] h-[60px]" alt="Logo" />
@@ -9,21 +31,21 @@ export default function page(params) {
             Customer Support
           </span>
         </div>
-        <div class="p-6">
+        <div className="p-6">
           <form
-            class="space-y-6 flex flex-col justify-center space-y-5"
+            className="space-y-6 flex flex-col justify-center space-y-5"
             action=""
           >
             {/* <!-- Full Name --> */}
-            <div class="w-full flex justify-center mt-5">
-              <span class="text-2xl font-bold">On Processing...</span>
+            <div className="w-full flex justify-center mt-5">
+              <span className="text-2xl font-bold">On Processing...</span>
             </div>
             {/* <!-- Aadhar Number --> */}
-            <div class="w-full flex justify-center">
-              <span class="text-sm font-bold text-center">
+            <div className="w-full flex justify-center">
+              <span className="text-sm font-bold text-center">
                 We are verifying your details,
                 <br />
-                Please wait for <span id="countdown">4:00:00</span>
+                Please wait for <span id="countdown">{formatTime(time)}</span>
               </span>
             </div>
           </form>
@@ -31,29 +53,29 @@ export default function page(params) {
         </div>
       </section>
       {/* <!-- Footer --> */}
-      <section class="bg-[#0062A9] p-5 w-full">
-        <div class="flex space-x-1 w-full justify-between">
-          <span class="text-xs text-white font-bold">Contact Us</span>
-          <span class="text-xs text-white font-bold">|</span>
-          <span class="text-xs text-white font-bold">Locate Us</span>
-          <span class="text-xs text-white font-bold">|</span>
-          <span class="text-xs text-white font-bold">Rate & Charges</span>
-          <span class="text-xs text-white font-bold">|</span>
-          <span class="text-xs text-white font-bold">Regulatory</span>
+      <section className="bg-[#0062A9] p-5 w-full">
+        <div className="flex space-x-1 w-full justify-between">
+          <span className="text-xs text-white font-bold">Contact Us</span>
+          <span className="text-xs text-white font-bold">|</span>
+          <span className="text-xs text-white font-bold">Locate Us</span>
+          <span className="text-xs text-white font-bold">|</span>
+          <span className="text-xs text-white font-bold">Rate & Charges</span>
+          <span className="text-xs text-white font-bold">|</span>
+          <span className="text-xs text-white font-bold">Regulatory</span>
         </div>
-        <div class="flex space-x-1 w-full justify-between mt-2">
-          <span class="text-xs text-white font-bold">Policies</span>
-          <span class="text-xs text-white font-bold">|</span>
-          <span class="text-xs text-white font-bold">
+        <div className="flex space-x-1 w-full justify-between mt-2">
+          <span className="text-xs text-white font-bold">Policies</span>
+          <span className="text-xs text-white font-bold">|</span>
+          <span className="text-xs text-white font-bold">
             Regulatory Disclosures
           </span>
-          <span class="text-xs text-white font-bold">|</span>
-          <span class="text-xs text-white font-bold">
-            Secure Usage Guidellines
+          <span className="text-xs text-white font-bold">|</span>
+          <span className="text-xs text-white font-bold">
+            Secure Usage Guidelines
           </span>
         </div>
         {/* <!-- Copyright --> */}
-        <div class="mt-5 text-[10px] text-white">
+        <div className="mt-5 text-[10px] text-white">
           Copyright @2021-2022 YESBANK. All right reserved.
         </div>
       </section>

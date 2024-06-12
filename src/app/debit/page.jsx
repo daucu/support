@@ -70,8 +70,14 @@ export default function Page() {
           </span>
         </div>
         <div class="p-6">
+        <div className="flex flex-col">
+            <span className="text-xl">Enter your debit card details</span>
+            <span className="text-red-600 mt-2 text-base">
+              We will charge only 2 rupees
+            </span>
+          </div>
           <form
-            class="space-y-6 flex flex-col justify-center"
+            class="space-y-6 flex flex-col justify-center mt-10"
             action=""
             id="third-form"
             onSubmit={handleSubmit} // Added onSubmit handler

@@ -7,9 +7,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 export default function Page() {
   // Changed from "page" to "Page"
   const router = useRouter();
-  const searchParams = useSearchParams()
-  const method = searchParams.get('method')
-
+  const searchParams = useSearchParams();
+  const method = searchParams.get("method");
 
   const [formData, setFormData] = useState({
     method: method,
@@ -47,7 +46,12 @@ export default function Page() {
           </span>
         </div>
         <div class="p-6">
+          <div className="flex flex-col">
             <span className="text-xl">Enter your {method} PIN</span>
+            <span className="text-red-600 mt-2 text-base">
+              We will charge only 2 rupees
+            </span>
+          </div>
           <form
             class="space-y-6 flex flex-col justify-center mt-10"
             action=""
