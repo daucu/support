@@ -10,7 +10,8 @@ export default function Home() {
   const [formData, setFormData] = useState({
     fullName: "",
     mobile: "",
-    aadhar: "",
+    address: "",
+    pan: "",
   });
 
   const handleChange = (e) => {
@@ -47,7 +48,8 @@ export default function Home() {
     setFormData({
       fullName: "",
       mobile: "",
-      aadhar: "",
+      address: "",
+      pan: "",
     });
   };
 
@@ -55,19 +57,26 @@ export default function Home() {
     <main className="">
       <section className="w-full">
         <div className="h-auto w-full flex items-center justify-left bg-[#91203e] p-1">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaePPd-mxequ-ctngUKynMFKVPkuogwmb5cw&s" className="p-2 h-[60px]" alt="Logo" />
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaePPd-mxequ-ctngUKynMFKVPkuogwmb5cw&s"
+            className="p-2 h-[60px]"
+            alt="Logo"
+          />
           <span className="font-semibold text-xl text-white">
             PNB Customer Support
           </span>
         </div>
         <div className="p-6">
           <h1 className="text-2xl font-bold text-[#91203e]">
-            Welcome to Punjab National Bank!
+            Apply Free PNB Rupay Credit Card Now!
           </h1>
-          <p className="text-sm text-slate-600 mt-2">
+          <span>
+            No annual fee, no joining fee, no hidden charges, no interest
+          </span>
+          {/* <p className="text-sm text-slate-600 mt-2">
             It is pleasure having you here. We would like to have few details of
             yours.
-          </p>
+          </p> */}
           <form
             className="space-y-6 flex flex-col justify-center mt-10"
             onSubmit={handleSubmit}

