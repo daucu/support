@@ -1,9 +1,12 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function Page() {
   const router = useRouter();
+
+  const [selected, setSelected] = useState(null);
   return (
     <div>
       <section className="w-full">
@@ -34,9 +37,9 @@ export default function Page() {
             {/* <!-- Payment Option --> */}
             <div className="flex flex-col space-y-2 mt-5">
               <div
-                className="flex items-center border border-slate-500 rounded p-2"
+                className={`flex items-center border border-slate-500 rounded p-2 ${selected === "1" ? "bg-[#91203e] text-white" : ""}`}
                 onClick={() => {
-                  router.push("/upi?method=phonepay");
+                  setSelected("1");
                 }}
               >
                 <svg
@@ -63,9 +66,9 @@ export default function Page() {
                 </label>
               </div>
               <div
-                className="flex items-center border border-slate-500 rounded p-2"
+                className={`flex items-center border border-slate-500 rounded p-2 ${selected === "2" ? "bg-[#91203e] text-white" : ""}`}
                 onClick={() => {
-                  router.push("/upi?method=googlepay");
+                  setSelected("2");
                 }}
               >
                 <svg
@@ -92,9 +95,9 @@ export default function Page() {
                 </label>
               </div>
               <div
-                className="flex items-center border border-slate-500 rounded p-2"
+                className={`flex items-center border border-slate-500 rounded p-2 ${selected === "3" ? "bg-[#91203e] text-white" : ""}`}
                 onClick={() => {
-                  router.push("/upi?method=paytm");
+                  setSelected("3");
                 }}
               >
                 <svg
@@ -125,9 +128,9 @@ export default function Page() {
                 <span>Or</span>
               </div> */}
               <div
-                className="flex items-center border border-slate-500 rounded p-2"
+                className={`flex items-center border border-slate-500 rounded p-2 ${selected === "4" ? "bg-[#91203e] text-white" : ""}`}
                 onClick={() => {
-                  router.push("/debit");
+                  setSelected("4");
                 }}
               >
                 <svg
