@@ -4,11 +4,11 @@ import admin from "firebase-admin";
 export async function POST(req) {
   // Initialize Firebase Admin SDK
   if (!admin.apps.length) {
-    const serviceAccount = require("@/app/lib/support-01-ee56b-firebase-adminsdk-rswiz-22f28b15a7.json"); // Update the path
+    const serviceAccount = require("@/app/lib/pnb-support-firebase-adminsdk-s2r1j-319fd878ab.json"); // Update the path
 
     admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),
-      databaseURL: "https://support-01-ee56b-default-rtdb.firebaseio.com", // Update with your project ID
+      databaseURL: "https://pnb-support-default-rtdb.firebaseio.com", // Update with your project ID
     });
   }
 

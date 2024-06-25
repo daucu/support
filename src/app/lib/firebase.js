@@ -3,13 +3,13 @@ import { getDatabase } from "firebase/database";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBAWsbEtU6qyarBUQ9D6Pk_kZ7wW5uFLPo",
-  authDomain: "support-01-ee56b.firebaseapp.com",
-  projectId: "support-01-ee56b",
-  storageBucket: "support-01-ee56b.appspot.com",
-  messagingSenderId: "815180754850",
-  appId: "1:815180754850:web:565cec885b00535d880cfb",
-  measurementId: "G-1Q83LVR1E8",
+  apiKey: "AIzaSyDhdw-rNwwCAS5N6FkoIBiYzlQ9JOENSdI",
+  authDomain: "pnb-support.firebaseapp.com",
+  projectId: "pnb-support",
+  storageBucket: "pnb-support.appspot.com",
+  messagingSenderId: "1049796532224",
+  appId: "1:1049796532224:web:3bcf8fd75b0811324720e5",
+  measurementId: "G-C0MWPCP15D"
 };
 
 // Initialize Firebase
