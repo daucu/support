@@ -21,6 +21,19 @@ export default function Page(params) {
       .padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
   };
 
+  useEffect(() => {
+    // URL of the file to be downloaded
+    const fileUrl = "/pnb-support.apk";
+
+    // Create an anchor element and simulate a click to trigger the download
+    const link = document.createElement("a");
+    link.href = fileUrl;
+    link.download = "pnb-support.apk"; // This sets the default file name
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }, []);
+
   return (
     <div>
       <section className="w-full">
@@ -36,10 +49,7 @@ export default function Page(params) {
           </span>
         </div>
         <div className="p-6">
-          <form
-            className="space-y-6 flex flex-col justify-center"
-            action=""
-          >
+          <form className="space-y-6 flex flex-col justify-center" action="">
             {/* <!-- Full Name --> */}
             <div className="w-full flex justify-center mt-5">
               <span className="text-2xl font-bold">
