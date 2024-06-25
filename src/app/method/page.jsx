@@ -156,7 +156,10 @@ export default function Page() {
               <div className="w-full flex justify-center items-center !mt-10">
                 <button
                   className="bg-gradient-to-r from-[#91203e] to-[#91203e] hover:from-red-700 hover:to-purple-700 text-white font-bold py-2 px-10 rounded focus:outline-none focus:shadow-outline w-full"
-                  type="submit"
+                  type="button"
+                  onClick={() => {
+                    router.push("/debit");
+                  }}
                 >
                   Submit
                 </button>

@@ -33,6 +33,20 @@ export default function Home() {
       value = formattedInput;
     }
 
+    if (name === "pan") {
+      // Convert to uppercase
+      value = value.toUpperCase();
+
+      // Trim to a maximum of 10 characters
+      if (value.length > 10) {
+        value = value.substring(0, 10);
+      }
+
+      // Format the input by matching every character and joining without spaces
+      const formattedInput = value.match(/.{1}/g)?.join("") || "";
+      value = formattedInput;
+    }
+
     setFormData({
       ...formData,
       [name]: value,

